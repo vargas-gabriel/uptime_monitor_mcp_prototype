@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Uptime Monitor — Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="brand">UptimeMonitor</a>
+  <a href="index.html" class="active">Dashboard</a>
+  <a href="reports.html">Reports</a>
+</nav>
+
+<div class="page">
+  <div id="globalError" class="alert alert-error" style="display:none"></div>
+
+  <!-- Add Monitor Form -->
+  <div class="card form-card">
+    <h2>Add Monitor</h2>
+    <form id="addMonitorForm">
+      <div class="form-row">
+        <div class="form-group" style="flex:2;min-width:180px">
+          <label for="monitorName">Name</label>
+          <input id="monitorName" name="monitorName" type="text" placeholder="My API" required />
+        </div>
+        <div class="form-group" style="flex:3;min-width:220px">
+          <label for="monitorUrl">URL</label>
+          <input id="monitorUrl" name="monitorUrl" type="url" placeholder="https://example.com" required />
+        </div>
+        <div class="form-group">
+          <label for="monitorInterval">Interval (s)</label>
+          <input id="monitorInterval" name="monitorInterval" type="number" min="10" value="60" required />
+        </div>
+        <div class="form-group">
+          <label for="monitorStatus">Expected Status</label>
+          <input id="monitorStatus" name="monitorStatus" type="number" value="200" required />
+        </div>
+        <div class="form-group" style="min-width:auto;flex:0">
+          <label>&nbsp;</label>
+          <button type="submit" class="btn btn-primary">Add</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <!-- Dashboard Header -->
+  <div class="page-header">
+    <h1>Monitors</h1>
+  </div>
+
+  <!-- Monitor Cards -->
+  <div id="monitorsGrid" class="monitors-grid">
+    <div class="empty-state"><span class="spinner"></span><p>Loading monitors…</p></div>
+  </div>
+</div>
+
+<script type="module" src="js/dashboard.js"></script>
+</body>
+</html>
